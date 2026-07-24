@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Users, Check, Sun, Moon, Leaf, SunMedium, Volume2, Droplets, Armchair, Shield, Camera, Sparkles, Palette, Clapperboard, Train, Building2, PanelTop, Disc, Music } from 'lucide-react';
+import { MapPin, Users, Check, Sun, Moon, Leaf, SunMedium, Volume2, Droplets, Armchair, Shield, Camera, Sparkles, Palette, Clapperboard, Train, Building2, PanelTop, Clock, Disc, Music } from 'lucide-react';
 import SpaceCarousel from '../components/SpaceCarousel';
 
 export default function Home() {
