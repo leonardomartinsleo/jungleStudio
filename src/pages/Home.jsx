@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Users, Check, Sun, Moon, Leaf, SunMedium, Volume2, Coffee, Armchair, Shield, Camera, Sparkles, Palette, Clapperboard, Train, Building2, PanelTop, Clock } from 'lucide-react';
+import { MapPin, Users, Check, Sun, Moon, Leaf, SunMedium, Volume2, Droplets, Armchair, Shield, Camera, Sparkles, Palette, Clapperboard, Train, Building2, PanelTop, Disc, Music } from 'lucide-react';
 import SpaceCarousel from '../components/SpaceCarousel';
 
 export default function Home() {
@@ -50,14 +50,7 @@ export default function Home() {
             <button className="btn-primary" onClick={() => scrollTo('reserva')}>
               Reserve seu horário
             </button>
-            <Link to="/sessions" className="btn-outline">
-              Ver Jungle Sessions ↗
-            </Link>
           </div>
-        </div>
-
-        <div className="hero-badge">
-          ✦ Disponível todos os dias · 7h às 22h
         </div>
       </section>
 
@@ -85,8 +78,8 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ── QUEM SOMOS ── */}
-      <section id="quemsomos" className="about-section">
+      {/* ── O ESTÚDIO ── */}
+      <section id="oestudio" className="about-section">
         <div className="container">
           <div className="about-grid">
             <div className="about-img-stack">
@@ -95,30 +88,27 @@ export default function Home() {
             </div>
 
             <div>
-              <p className="section-label">Quem Somos</p>
+              <p className="section-label">O Estúdio</p>
               <h2 className="section-title">
                 Um estúdio diferente de<br />
                 <em>tudo que você já viu.</em>
               </h2>
-              <p className="section-body" style={{ marginBottom: '1.5rem' }}>
-                Do alto do centro histórico de São Paulo, o Jungle Studio é um espaço vivo — cheio de plantas, arte, luz e personalidade. Criado para quem quer produzir com intenção e sair com imagens que realmente impressionam.
-              </p>
               <p className="section-body" style={{ marginBottom: '2.5rem' }}>
-                Cada canto do estúdio é um novo cenário. E ao fundo, uma vista panorâmica de SP que você não encontra em nenhum outro lugar.
+                Cada canto do estúdio é um novo cenário e cada cenário, muitas opções. A vista panorâmica do centro de SP completa sua produção.
               </p>
 
               <div className="about-stat-row">
                 <div className="about-stat">
-                  <span className="num">3+</span>
-                  <span className="label">Ambientes únicos</span>
+                  <span className="num" style={{ fontSize: '1.8rem' }}>🐍</span>
+                  <span className="label">Ambientes Múltiplos</span>
                 </div>
                 <div className="about-stat">
-                  <span className="num">13</span>
-                  <span className="label">Sessions em 2025</span>
+                  <span className="num" style={{ fontSize: '1.8rem' }}>🐍</span>
+                  <span className="label">Objetos Diversos</span>
                 </div>
                 <div className="about-stat">
-                  <span className="num">24h</span>
-                  <span className="label">Portaria</span>
+                  <span className="num" style={{ fontSize: '1.8rem' }}>🐍</span>
+                  <span className="label">O Dia Todo</span>
                 </div>
               </div>
             </div>
@@ -159,6 +149,14 @@ export default function Home() {
                   <span className="topic-icon"><Clapperboard size={20} /></span>
                   <span className="topic-text">Produções Criativas</span>
                 </div>
+                <div className="versatile-topic">
+                  <span className="topic-icon"><Disc size={20} /></span>
+                  <span className="topic-text">Jungle Sessions</span>
+                </div>
+                <div className="versatile-topic">
+                  <span className="topic-icon"><Music size={20} /></span>
+                  <span className="topic-text">Sonora</span>
+                </div>
               </div>
             </div>
           </div>
@@ -180,9 +178,9 @@ export default function Home() {
               { icon: <Leaf size={28} />, title: 'Plantas Tropicais', desc: 'Mais de 30 espécies decoram o espaço, criando cenários naturais únicos para seus ensaios.' },
               { icon: <SunMedium size={28} />, title: 'Luz Natural', desc: 'Janelas amplas com vista para o centro de SP garantem iluminação natural incrível durante o dia.' },
               { icon: <Volume2 size={28} />, title: 'Caixa de Som', desc: 'Sistema de som de qualidade para ambientar sua sessão com a trilha perfeita.' },
-              { icon: <Coffee size={28} />, title: 'Café & Água', desc: 'Café e água inclusos para você e seu time durante toda a locação.' },
+              { icon: <Droplets size={28} />, title: 'Água', desc: 'Água inclusa para você e seu time durante toda a locação.' },
               { icon: <Armchair size={28} />, title: 'Mobiliário Versátil', desc: 'Móveis que se adaptam ao seu projeto — minimalistas ou cheios de personalidade.' },
-              { icon: <Shield size={28} />, title: 'Portaria 24h', desc: 'Segurança e tranquilidade. Acesso controlado durante todo o seu horário.' },
+              { icon: <Shield size={28} />, title: 'Segurança & Localização Privilegiada', desc: 'Ao lado do Metrô São Bento e portaria 24h.' },
             ].map((f, i) => (
               <div key={i} className="feature-card">
                 <span className="feature-icon">{f.icon}</span>
@@ -264,11 +262,11 @@ export default function Home() {
           <div className="pricing-header">
             <p className="section-label">Reserve seu Horário</p>
             <h2 className="section-title">
-              Escolha seu espaço.<br />
+              Escolha o melhor espaço.<br />
               <em>Crie sem limites.</em>
             </h2>
             <p className="section-body">
-              Locação mínima de 2h · Até 6 pessoas incluídas · Pagamento à vista para reservar.
+              Locação mínima de 1h · Até 6 pessoas incluídas · Pagamento à vista para reservar.
             </p>
 
             {/* Toggle Dia/Noite */}
@@ -290,110 +288,106 @@ export default function Home() {
           </div>
 
           <div className="pricing-content">
-
-          <div className="pricing-cards">
-            {/* Sala Ipê */}
-            <div className="p-card">
-              <div className="p-card-accent" />
-              <span className="p-card-tag">Sala Ipê</span>
-              <h3>Luz Natural</h3>
-              <div className="p-price">
-                <span className="currency">R$</span>
-                <span className="amount">{current.ipe.price}</span>
-                <span className="per">/hora</span>
+            <div className="pricing-cards">
+              {/* Sala Ipê – featured / Mais Escolhido */}
+              <div className="p-card featured">
+                <div className="p-card-accent" />
+                <span className="p-card-tag" style={{ background: 'var(--terracotta)' }}>Sala Ipê · Mais escolhido</span>
+                <h3>Luz Natural</h3>
+                <div className="p-price">
+                  <span className="currency" style={{ color: 'rgba(255,255,255,0.6)' }}>R$</span>
+                  <span className="amount" style={{ color: 'white' }}>{current.ipe.price}</span>
+                  <span className="per" style={{ color: 'rgba(255,255,255,0.5)' }}>/hora</span>
+                </div>
+                <p className="p-note">R$ {current.ipe.single}/hora para 1h única</p>
+                <div className="p-divider" />
+                <ul className="p-features">
+                  <li><Check size={16} className="icon" /> Poltronas</li>
+                  <li><Check size={16} className="icon" /> Balanço</li>
+                  <li><Check size={16} className="icon" /> Cama</li>
+                  <li><Check size={16} className="icon" /> Luz natural</li>
+                  <li><Check size={16} className="icon" /> Barra de Pole Dance</li>
+                </ul>
+                <button className="btn-primary" style={{ width: '100%', marginTop: '2rem', background: 'white', color: 'var(--green-dark)' }}
+                  onClick={() => window.open('https://wa.me/5511913684056?text=Olá! Quero reservar a Sala Ipê no Jungle Studio.', '_blank')}>
+                  Reservar Sala Ipê
+                </button>
               </div>
-              <p className="p-note">R$ {current.ipe.single}/hora para 1h única</p>
-              <div className="p-divider" />
-              <ul className="p-features">
-                <li><Check size={16} className="icon" /> Plantas tropicais e luz natural</li>
-                <li><Check size={16} className="icon" /> Vista panorâmica do centro de SP</li>
-                <li><Check size={16} className="icon" /> Mobiliário vintage e versátil</li>
-                <li><Check size={16} className="icon" /> Café e água inclusos</li>
-              </ul>
-              <button className="btn-primary" style={{ width: '100%', marginTop: '2rem' }}
-                onClick={() => window.open('https://wa.me/5511913684056?text=Olá! Quero reservar a Sala Ipê no Jungle Studio.', '_blank')}>
-                Reservar Sala Ipê
-              </button>
-            </div>
 
-            {/* Sala PRO – featured */}
-            <div className="p-card featured">
-              <div className="p-card-accent" />
-              <span className="p-card-tag" style={{ background: 'var(--terracotta)' }}>Sala PRO · Mais escolhido</span>
-              <h3>O espaço completo</h3>
-              <div className="p-price">
-                <span className="currency" style={{ color: 'rgba(255,255,255,0.6)' }}>R$</span>
-                <span className="amount" style={{ color: 'white' }}>{current.pro.price}</span>
-                <span className="per" style={{ color: 'rgba(255,255,255,0.5)' }}>/hora</span>
+              {/* Sala PRO */}
+              <div className="p-card">
+                <div className="p-card-accent" />
+                <span className="p-card-tag">Sala PRO</span>
+                <h3>O espaço completo</h3>
+                <div className="p-price">
+                  <span className="currency">R$</span>
+                  <span className="amount">{current.pro.price}</span>
+                  <span className="per">/hora</span>
+                </div>
+                <p className="p-note">R$ {current.pro.single}/hora para 1h única</p>
+                <div className="p-divider" />
+                <ul className="p-features">
+                  <li><Check size={16} className="icon" /> Fundo branco</li>
+                  <li><Check size={16} className="icon" /> Tecidos</li>
+                  <li><Check size={16} className="icon" /> 3 tochas de flash</li>
+                  <li><Check size={16} className="icon" /> Mobília versátil</li>
+                </ul>
+                <button className="btn-primary" style={{ width: '100%', marginTop: '2rem' }}
+                  onClick={() => window.open('https://wa.me/5511913684056?text=Olá! Quero reservar a Sala PRO no Jungle Studio.', '_blank')}>
+                  Reservar Sala PRO
+                </button>
               </div>
-              <p className="p-note">R$ {current.pro.single}/hora para 1h única</p>
-              <div className="p-divider" />
-              <ul className="p-features">
-                <li><Check size={16} className="icon" /> Swing, garrafa ball & parede terracota</li>
-                <li><Check size={16} className="icon" /> Iluminação cênica completa</li>
-                <li><Check size={16} className="icon" /> Espaço amplo para produções grandes</li>
-                <li><Check size={16} className="icon" /> Caixa de som de qualidade</li>
-              </ul>
-              <button className="btn-primary" style={{ width: '100%', marginTop: '2rem', background: 'white', color: 'var(--green-dark)' }}
-                onClick={() => window.open('https://wa.me/5511913684056?text=Olá! Quero reservar a Sala PRO no Jungle Studio.', '_blank')}>
-                Reservar Sala PRO
-              </button>
-            </div>
 
-            {/* Locação dia */}
-            <div className="p-card">
-              <div className="p-card-accent" />
-              <span className="p-card-tag">Locação Diária</span>
-              <h3>Dia Inteiro</h3>
-              <div className="p-price">
-                <span className="currency">R$</span>
-                <span className="amount">1k</span>
-                <span className="per">/dia</span>
+              {/* Full Jungle */}
+              <div className="p-card">
+                <div className="p-card-accent" />
+                <span className="p-card-tag">Full Jungle</span>
+                <h3>Experiência Completa</h3>
+                <div className="p-price">
+                  <span className="currency">R$</span>
+                  <span className="amount">300</span>
+                  <span className="per">/hora</span>
+                </div>
+                <p className="p-note">R$ 350/hora para 1h única (a partir de 2h: R$ 300/h)</p>
+                <div className="p-divider" />
+                <ul className="p-features">
+                  <li><Check size={16} className="icon" /> Todos os ambientes disponíveis</li>
+                  <li><Check size={16} className="icon" /> Suporte durante a produção</li>
+                  <li><Check size={16} className="icon" /> Preços especiais acima de 6 horas</li>
+                </ul>
+                <button className="btn-outline" style={{ width: '100%', marginTop: '2rem' }}
+                  onClick={() => window.open('https://wa.me/5511913684056?text=Olá! Quero reservar o Full Jungle no Jungle Studio.', '_blank')}>
+                  Reservar Full Jungle
+                </button>
               </div>
-              <p className="p-note">Consulte disponibilidade</p>
-              <div className="p-divider" />
-              <ul className="p-features">
-                <li><Check size={16} className="icon" /> Acesso das 7h às 22h</li>
-                <li><Check size={16} className="icon" /> Todos os ambientes disponíveis</li>
-                <li><Check size={16} className="icon" /> Ideal para produções longas</li>
-                <li><Check size={16} className="icon" /> Suporte durante toda a produção</li>
-                <li><Check size={16} className="icon" /> Preço especial para parcerias</li>
-              </ul>
-              <button className="btn-outline" style={{ width: '100%', marginTop: '2rem' }}
-                onClick={() => window.open('https://wa.me/5511913684056?text=Olá! Quero saber sobre locação diária no Jungle Studio.', '_blank')}>
-                Consultar
-              </button>
             </div>
-          </div>
 
-          {/* Full Jungle */}
-          <div className="full-jungle">
-            <div>
-              <h3>Full Jungle</h3>
-              <p>Acesso a <strong style={{ color: 'white' }}>todos os ambientes</strong> do estúdio. A selva inteira é sua — do jeito que sua produção merece.</p>
+            {/* Produções Maiores */}
+            <div className="full-jungle" style={{ marginTop: '2rem' }}>
+              <div>
+                <h3>PRODUÇÕES MAIORES</h3>
+                <p>Acesso a <strong style={{ color: 'white' }}>todos os ambientes</strong> do estúdio. A selva inteira é sua — do jeito que sua produção merece.</p>
+              </div>
+              <div className="full-jungle-price" style={{ justifyContent: 'center' }}>
+                <button className="btn-primary full-jungle-btn"
+                  onClick={() => window.open('https://wa.me/5511913684056?text=Olá! Gostaria de fazer um orçamento para uma produção maior no Jungle Studio.', '_blank')}>
+                  FAÇA SEU ORÇAMENTO
+                </button>
+              </div>
             </div>
-            <div className="full-jungle-price">
-              <span className="amount">R$ 250<span style={{ fontSize: '1.5rem' }}>/h</span></span>
-              <span className="per">R$ 300 para 1h única</span>
-              <button className="btn-primary full-jungle-btn"
-                onClick={() => window.open('https://wa.me/5511913684056?text=Olá! Quero reservar o Full Jungle no Jungle Studio.', '_blank')}>
-                Reservar Full Jungle
-              </button>
+
+            <div className="extra-info-box">
+              <Users size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.5rem', color: 'var(--green-deep)' }} />
+              Acima de 6 pessoas, acréscimo de <strong>R$ 40,00 por pessoa</strong> adicional, independente do tempo de permanência.
             </div>
-          </div>
 
-          <div className="extra-info-box">
-            <Users size={18} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '0.5rem', color: 'var(--green-deep)' }} />
-            Acima de 6 pessoas, acréscimo de <strong>R$ 40,00 por pessoa</strong> adicional, independente do tempo de permanência.
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <p style={{ fontSize: '1rem', color: '#888', marginBottom: '1.5rem' }}>Dúvidas? A gente resolve no WhatsApp.</p>
-            <a href="https://wa.me/5511913684056" target="_blank" rel="noopener noreferrer" className="btn-primary"
-              style={{ fontSize: '1.1rem', padding: '1.1rem 3rem' }}>
-              Falar no WhatsApp
-            </a>
-          </div>
+            <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+              <p style={{ fontSize: '1rem', color: '#888', marginBottom: '1.5rem' }}>Dúvidas? A gente resolve no WhatsApp.</p>
+              <a href="https://wa.me/5511913684056" target="_blank" rel="noopener noreferrer" className="btn-primary"
+                style={{ fontSize: '1.1rem', padding: '1.1rem 3rem' }}>
+                Falar no WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </section>

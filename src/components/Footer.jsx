@@ -20,11 +20,13 @@ export default function Footer() {
           <div className="footer-col">
             <h4>Navegação</h4>
             <ul>
-              <li><a href="#quemsomos" onClick={e => { e.preventDefault(); scrollTo('quemsomos'); }}>Quem Somos</a></li>
+              <li><a href="#oestudio" onClick={e => { e.preventDefault(); scrollTo('oestudio'); }}>O Estúdio</a></li>
+              <li><Link to="/quem-somos">Quem Somos</Link></li>
               <li><a href="#espaco" onClick={e => { e.preventDefault(); scrollTo('espaco'); }}>Espaço</a></li>
               <li><a href="#localizacao" onClick={e => { e.preventDefault(); scrollTo('localizacao'); }}>Localização</a></li>
-              <li><a href="#reserva" onClick={e => { e.preventDefault(); scrollTo('reserva'); }}>Reserve um Horário</a></li>
               <li><Link to="/sessions">Jungle Sessions</Link></li>
+              <li><Link to="/sonora">Sonora</Link></li>
+              <li><Link to="/loja">Loja</Link></li>
             </ul>
           </div>
 

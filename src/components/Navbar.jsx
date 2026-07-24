@@ -7,7 +7,6 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === '/';
-  const isSessions = location.pathname === '/sessions';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -26,10 +25,13 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { label: 'Quem Somos', id: 'quemsomos', type: 'scroll' },
+    { label: 'O Estúdio', id: 'oestudio', type: 'scroll' },
+    { label: 'Quem Somos', path: '/quem-somos', type: 'link' },
     { label: 'Espaço', id: 'espaco', type: 'scroll' },
     { label: 'Localização', id: 'localizacao', type: 'scroll' },
     { label: 'Jungle Sessions', path: '/sessions', type: 'link' },
+    { label: 'Sonora', path: '/sonora', type: 'link' },
+    { label: 'Loja', path: '/loja', type: 'link' },
   ];
 
   return (
@@ -57,7 +59,7 @@ export default function Navbar() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`nav-link${isSessions ? ' nav-link-active' : ''}`}
+                className={`nav-link${location.pathname === link.path ? ' nav-link-active' : ''}`}
               >
                 {link.label}
               </Link>
