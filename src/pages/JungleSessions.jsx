@@ -110,16 +110,16 @@ export default function JungleSessions() {
       {/* HERO */}
       <section className="sessions-hero">
         <span className="sessions-hero-eyebrow">
-          🎧 Conteúdo Audiovisual Exclusivo
+          NOSSA PRODUÇÃO AUDIOVISUAL EXCLUSIVA
         </span>
         <h1>
           Bem-vindo ao<br />
           <em>Jungle Sessions.</em>
         </h1>
-        <p>
-          Um projeto audiovisual exclusivo para DJs, gravado no cenário único do Jungle Studio — no coração de São Paulo.
+        <p style={{ letterSpacing: '0.05em', textTransform: 'uppercase', fontWeight: 600 }}>
+          NOSSA PRODUÇÃO AUDIOVISUAL EXCLUSIVA
         </p>
-        <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', fontWeight: 600, transition: 'color 0.2s' }}
+        <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', fontWeight: 600, transition: 'color 0.2s', marginTop: '1rem' }}
           onMouseEnter={e => e.currentTarget.style.color = 'white'}
           onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}>
           <ArrowLeft size={16} /> Voltar ao início
@@ -131,28 +131,31 @@ export default function JungleSessions() {
         <div className="container">
           {/* Intro text */}
           <div className="sessions-intro">
-            <p className="section-label" style={{ textAlign: 'center' }}>O que é isso?</p>
-            <h2 className="section-title" style={{ textAlign: 'center', margin: '0 auto 1rem' }}>
+            <h2 className="section-title" style={{ textAlign: 'center', margin: '0 auto 1.5rem' }}>
               HEY, DJ! O que é o<br /><em>Jungle Sessions?</em>
             </h2>
             <p>
-              É um conteúdo audiovisual exclusivo para DJs, produzido aqui nesse cenário único — cheio de plantas, luz e personalidade no centro histórico de São Paulo.
+              O Jungle Sessions é uma experiência audiovisual criada para DJs que querem transformar seu set em conteúdo — com música, estética e identidade.
             </p>
             <p style={{ marginTop: '1rem' }}>
-              Fizemos <strong>13 edições em 2025</strong> e cada DJ trouxe sua vibe, sua estética visual e suas referências musicais num set especial para gerar um material exclusivo de <strong>alta qualidade</strong>.
+              Gravado no Jungle Studio, no Centro Histórico de São Paulo, cada Session ganha uma atmosfera própria, unindo o universo do artista à estética do nosso espaço.
             </p>
             <p style={{ marginTop: '1rem' }}>
-              A <strong>agenda está aberta</strong> para as gravações das novas edições de 2026! Cada edição é única — você escolhe a playlist, a estética e a hora. A gente garante o cenário perfeito e a produção audiovisual.
+              Depois do sucesso das primeiras edições, o Jungle Sessions segue com novos cenários, novas possibilidades visuais e uma produção pensada para que cada edição seja única.
+            </p>
+            <p style={{ marginTop: '1rem' }}>
+              Você escolhe o set, traz sua identidade e a sua vibe.<br />
+              A gente transforma isso em experiência e conteúdo audiovisual.
             </p>
             <div style={{ marginTop: '2rem' }}>
               <a
-                href="https://wa.me/5511913684056?text=Oi! Quero saber mais sobre o Jungle Sessions 2026!"
+                href="https://wa.me/5511913684056?text=Oi! Quero gravar no Jungle Sessions!"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary"
                 style={{ fontSize: '1.05rem', padding: '1rem 2.5rem' }}
               >
-                Chama na DM — Quero gravar! 🌿
+                Chama na DM — Quero gravar!
               </a>
             </div>
           </div>
@@ -221,9 +224,10 @@ export default function JungleSessions() {
 
           {/* CTA */}
           <div className="sessions-cta">
-            <h3>Sua edição pode ser a próxima. 🎧</h3>
+            <h3>Seu set. Sua vibe. Sua Session.</h3>
             <p>
-              Agenda aberta para 2026. Se você é DJ e quer gravar um set exclusivo no Jungle Studio, chama a gente. A selva espera por você.
+              As novas edições do Jungle Sessions já estão sendo produzidas.<br />
+              Traga sua música, seu público e sua identidade. A gente cria o cenário e transforma seu set em uma experiência audiovisual única.
             </p>
             <a
               href="https://wa.me/5511913684056?text=Oi! Vi o Jungle Sessions e quero gravar o meu set no estúdio!"

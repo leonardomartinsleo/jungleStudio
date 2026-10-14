@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import JungleSessions from './pages/JungleSessions';
+import Sonora from './pages/Sonora';
 import ComingSoon from './pages/ComingSoon';
 
 function ScrollToTop() {
@@ -23,9 +24,16 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sessions" element={<JungleSessions />} />
-          <Route path="/quem-somos" element={<ComingSoon title="Quem Somos" />} />
-          <Route path="/sonora" element={<ComingSoon title="Sonora" />} />
-          <Route path="/loja" element={<ComingSoon title="Loja" />} />
+          <Route path="/sonora" element={<Sonora />} />
+          <Route path="/jungle-live" element={<ComingSoon title="Jungle Live" subtitle="Em breve conteúdo" />} />
+          <Route path="/live" element={<ComingSoon title="Jungle Live" subtitle="Em breve conteúdo" />} />
+          <Route path="/jungle-rec" element={<ComingSoon title="Jungle Rec" subtitle="Em breve conteúdo" />} />
+          <Route path="/rec" element={<ComingSoon title="Jungle Rec" subtitle="Em breve conteúdo" />} />
+          <Route path="/quem-somos" element={<ComingSoon title="Quem Somos" subtitle="Em breve conteúdo" />} />
+          <Route path="/loja" element={<ComingSoon title="Lojinha" subtitle="Em breve conteúdo" />} />
+          <Route path="/loja/jungle" element={<ComingSoon title="Lojinha - Jungle" subtitle="Em breve conteúdo" />} />
+          <Route path="/loja/decoracao" element={<ComingSoon title="Lojinha - Decoração" subtitle="Em breve conteúdo" />} />
+          <Route path="/loja/akasha" element={<ComingSoon title="Lojinha - Akasha" subtitle="Em breve conteúdo" />} />
         </Routes>
       </main>
       <Footer />

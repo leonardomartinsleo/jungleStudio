@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Calendar } from 'lucide-react';
+import { Menu, X, Calendar, ChevronDown } from 'lucide-react';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [mobileDropdown, setMobileDropdown] = useState(null); // 'producoes' | 'lojinha' | null
   const location = useLocation();
   const isHome = location.pathname === '/';
 
@@ -15,56 +16,126 @@ export default function Navbar() {
   }, []);
 
   // Close mobile menu on route change
-  useEffect(() => { setOpen(false); }, [location.pathname]);
+  useEffect(() => {
+    setOpen(false);
+    setMobileDropdown(null);
+  }, [location.pathname]);
 
   const scrollTo = (id) => {
     setOpen(false);
-    if (!isHome) { window.location.href = '/#' + id; return; }
+    setMobileDropdown(null);
+    if (!isHome) {
+      window.location.href = '/#' + id;
+      return;
+    }
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const navLinks = [
-    { label: 'O Estúdio', id: 'oestudio', type: 'scroll' },
-    { label: 'Quem Somos', path: '/quem-somos', type: 'link' },
-    { label: 'Espaço', id: 'espaco', type: 'scroll' },
-    { label: 'Localização', id: 'localizacao', type: 'scroll' },
-    { label: 'Jungle Sessions', path: '/sessions', type: 'link' },
-    { label: 'Sonora', path: '/sonora', type: 'link' },
-    { label: 'Loja', path: '/loja', type: 'link' },
+  const toggleMobileDropdown = (name) => {
+    setMobileDropdown(prev => (prev === name ? null : name));
+  };
+
+  const producoesItems = [
+    { label: 'Jungle Sessions', path: '/sessions' },
+    { label: 'Sonora', path: '/sonora' },
+    { label: 'Jungle Live', path: '/jungle-live' },
+    { label: 'Jungle Rec', path: '/jungle-rec' },
   ];
+
+  const lojinhaItems = [
+    { label: 'Jungle', path: '/loja/jungle' },
+    { label: 'Decoração', path: '/loja/decoracao' },
+    { label: 'Akasha', path: '/loja/akasha' },
+  ];
+
+  const isProducoesActive = producoesItems.some(item => location.pathname === item.path);
+  const isLojinhaActive = lojinhaItems.some(item => location.pathname === item.path) || location.pathname.startsWith('/loja');
 
   return (
     <nav className={`navbar${scrolled ? ' scrolled' : ''}${open ? ' open' : ''}`}>
       <div className="navbar-inner">
         {/* Logo */}
-        <Link to="/" className="nav-logo">
-          <img src="/images/page2_img2.png" alt="Jungle Studio" />
-          <span className="nav-logo-text">Jungle Studio</span>
+        <Link to="/" className="nav-logo" aria-label="Jungle Studio Home">
+          <img src="/logo/JUNGLE%20BRANCO.svg" alt="Jungle Studio" />
         </Link>
 
         {/* Desktop Links */}
         <div className="nav-links">
-          {navLinks.map((link) =>
-            link.type === 'scroll' ? (
-              <a
-                key={link.id}
-                href={`#${link.id}`}
-                className="nav-link"
-                onClick={e => { e.preventDefault(); scrollTo(link.id); }}
-              >
-                {link.label}
-              </a>
-            ) : (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`nav-link${location.pathname === link.path ? ' nav-link-active' : ''}`}
-              >
-                {link.label}
-              </Link>
-            )
-          )}
+          <a
+            href="#oestudio"
+            className="nav-link"
+            onClick={e => { e.preventDefault(); scrollTo('oestudio'); }}
+          >
+            O estúdio
+          </a>
+
+          <Link
+            to="/quem-somos"
+            className={`nav-link${location.pathname === '/quem-somos' ? ' nav-link-active' : ''}`}
+          >
+            Quem somos
+          </Link>
+
+          <a
+            href="#espaco"
+            className="nav-link"
+            onClick={e => { e.preventDefault(); scrollTo('espaco'); }}
+          >
+            Espaços
+          </a>
+
+          <a
+            href="#localizacao"
+            className="nav-link"
+            onClick={e => { e.preventDefault(); scrollTo('localizacao'); }}
+          >
+            Como chegar
+          </a>
+
+          {/* Produções Dropdown */}
+          <div className="nav-dropdown">
+            <button
+              type="button"
+              className={`nav-link nav-dropdown-trigger${isProducoesActive ? ' nav-link-active' : ''}`}
+            >
+              <span>Produções</span>
+              <ChevronDown size={14} />
+            </button>
+            <div className="nav-dropdown-menu">
+              {producoesItems.map(item => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`nav-dropdown-item${location.pathname === item.path ? ' nav-dropdown-item-active' : ''}`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Lojinha Dropdown */}
+          <div className="nav-dropdown">
+            <button
+              type="button"
+              className={`nav-link nav-dropdown-trigger${isLojinhaActive ? ' nav-link-active' : ''}`}
+            >
+              <span>Lojinha</span>
+              <ChevronDown size={14} />
+            </button>
+            <div className="nav-dropdown-menu">
+              {lojinhaItems.map(item => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`nav-dropdown-item${location.pathname === item.path ? ' nav-dropdown-item-active' : ''}`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
 
           <div className="nav-divider" />
 
@@ -79,7 +150,11 @@ export default function Navbar() {
         </div>
 
         {/* Mobile toggle */}
-        <button className="nav-mobile-btn" onClick={() => setOpen(!open)} aria-label="Menu">
+        <button
+          className="nav-mobile-btn"
+          onClick={() => setOpen(!open)}
+          aria-label="Menu"
+        >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -87,27 +162,90 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <div className={`nav-mobile-menu${open ? ' active' : ''}`}>
         <div className="nav-mobile-inner">
-          {navLinks.map((link) =>
-            link.type === 'scroll' ? (
-              <a
-                key={link.id}
-                href={`#${link.id}`}
-                className="nav-mobile-link"
-                onClick={e => { e.preventDefault(); scrollTo(link.id); }}
-              >
-                {link.label}
-              </a>
-            ) : (
-              <Link
-                key={link.path}
-                to={link.path}
-                className="nav-mobile-link sessions"
-                onClick={() => setOpen(false)}
-              >
-                {link.label}
-              </Link>
-            )
-          )}
+          <a
+            href="#oestudio"
+            className="nav-mobile-link"
+            onClick={e => { e.preventDefault(); scrollTo('oestudio'); }}
+          >
+            O estúdio
+          </a>
+
+          <Link
+            to="/quem-somos"
+            className={`nav-mobile-link${location.pathname === '/quem-somos' ? ' sessions' : ''}`}
+            onClick={() => setOpen(false)}
+          >
+            Quem somos
+          </Link>
+
+          <a
+            href="#espaco"
+            className="nav-mobile-link"
+            onClick={e => { e.preventDefault(); scrollTo('espaco'); }}
+          >
+            Espaços
+          </a>
+
+          <a
+            href="#localizacao"
+            className="nav-mobile-link"
+            onClick={e => { e.preventDefault(); scrollTo('localizacao'); }}
+          >
+            Como chegar
+          </a>
+
+          {/* Mobile Produções Accordion */}
+          <div>
+            <button
+              type="button"
+              className={`nav-mobile-dropdown-btn${mobileDropdown === 'producoes' ? ' open' : ''}${isProducoesActive ? ' sessions' : ''}`}
+              onClick={() => toggleMobileDropdown('producoes')}
+            >
+              <span>Produções</span>
+              <ChevronDown size={16} />
+            </button>
+            {mobileDropdown === 'producoes' && (
+              <div className="nav-mobile-submenu">
+                {producoesItems.map(item => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className="nav-mobile-sublink"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Mobile Lojinha Accordion */}
+          <div>
+            <button
+              type="button"
+              className={`nav-mobile-dropdown-btn${mobileDropdown === 'lojinha' ? ' open' : ''}${isLojinhaActive ? ' sessions' : ''}`}
+              onClick={() => toggleMobileDropdown('lojinha')}
+            >
+              <span>Lojinha</span>
+              <ChevronDown size={16} />
+            </button>
+            {mobileDropdown === 'lojinha' && (
+              <div className="nav-mobile-submenu">
+                {lojinhaItems.map(item => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className="nav-mobile-sublink"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
           <a
             href="#reserva"
             className="nav-mobile-cta"

@@ -1,29 +1,12 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Users, Check, Sun, Moon, Leaf, SunMedium, Volume2, Droplets, Armchair, Shield, Camera, Sparkles, Palette, Clapperboard, Train, Building2, PanelTop, Clock, Disc, Music } from 'lucide-react';
+import { Calendar, MapPin, Users, Check, Leaf, SunMedium, Volume2, Droplets, Armchair, Shield, Camera, Sparkles, Palette, Clapperboard, Train, Building2, PanelTop, Clock, Disc, Music } from 'lucide-react';
 import SpaceCarousel from '../components/SpaceCarousel';
 
 export default function Home() {
-  const [isNight, setIsNight] = useState(false);
-
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
-
-  // Pricing data
-  const pricing = {
-    day: {
-      ipe: { price: 130, single: 170 },
-      pro: { price: 130, single: 180 },
-    },
-    night: {
-      ipe: { price: 150, single: 180 },
-      pro: { price: 140, single: 180 },
-    },
-  };
-
-  const current = isNight ? pricing.night : pricing.day;
 
   return (
     <>
@@ -38,17 +21,18 @@ export default function Home() {
 
         <div className="hero-content">
           <h1 className="hero-tagline fade-up fade-up-d1">
-            Welcome to the <em>Jungle Studio</em><br />
-            Seu cenário único<br />
-            no <em>coração</em> de<br />
+            Welcome to the <em>Jungle Studio</em><br></br>
+            Seu cenário único
+            no <em>coração</em>&nbsp;&nbsp;de 
             São Paulo.
           </h1>
           <p className="hero-sub fade-up fade-up-d2">
             Um oásis criativo no centro histórico da cidade. Espaço exclusivo para ensaios fotográficos, editoriais, produções audiovisuais e sets musicais — do alto do Viaduto Santa Ifigênia.
           </p>
           <div className="hero-actions fade-up fade-up-d3">
-            <button className="btn-primary" onClick={() => scrollTo('reserva')}>
-              Reserve seu horário
+            <button className="hero-cta" onClick={() => scrollTo('reserva')}>
+              <Calendar size={18} />
+              Reserve Agora
             </button>
           </div>
         </div>
@@ -195,7 +179,6 @@ export default function Home() {
       {/* ── ESPAÇO / CAROUSEL ── */}
       <section id="espaco" className="spaces-section">
         <div className="container" style={{ marginBottom: '3rem' }}>
-          <p className="section-label">Nossos Espaços</p>
           <h2 className="section-title">
             Clique para explorar<br />
             <em>cada ambiente.</em>
@@ -215,7 +198,7 @@ export default function Home() {
               <MapPin size={14} /> Localização
             </span>
             <h2 className="section-title light">
-              No coração histórico<br />de São Paulo.
+              No coração histórico de São Paulo.
             </h2>
             <p className="section-body light" style={{ marginBottom: '1rem' }}>
               Localizado no Viaduto Santa Ifigênia, ao lado do Mosteiro São Bento e a poucos passos do Metrô São Bento — uma das regiões mais icônicas da cidade.
@@ -265,26 +248,6 @@ export default function Home() {
               Escolha o melhor espaço.<br />
               <em>Crie sem limites.</em>
             </h2>
-            <p className="section-body">
-              Locação mínima de 1h · Até 6 pessoas incluídas · Pagamento à vista para reservar.
-            </p>
-
-            {/* Toggle Dia/Noite */}
-            <div className="day-night-toggle">
-              <span className={`toggle-label ${!isNight ? 'active' : ''}`}>
-                <Sun size={16} /> Dia
-              </span>
-              <button
-                className={`toggle-switch ${isNight ? 'night' : ''}`}
-                onClick={() => setIsNight(!isNight)}
-                aria-label="Alternar entre preços diurnos e noturnos"
-              >
-                <span className="toggle-knob" />
-              </button>
-              <span className={`toggle-label ${isNight ? 'active' : ''}`}>
-                <Moon size={16} /> Noite <small>(após 18h)</small>
-              </span>
-            </div>
           </div>
 
           <div className="pricing-content">
@@ -292,21 +255,21 @@ export default function Home() {
               {/* Sala Ipê – featured / Mais Escolhido */}
               <div className="p-card featured">
                 <div className="p-card-accent" />
-                <span className="p-card-tag" style={{ background: 'var(--terracotta)' }}>Sala Ipê · Mais escolhido</span>
-                <h3>Luz Natural</h3>
+                <h3 className="p-card-title-featured">Sala Ipê — o mais escolhido</h3>
                 <div className="p-price">
                   <span className="currency" style={{ color: 'rgba(255,255,255,0.6)' }}>R$</span>
-                  <span className="amount" style={{ color: 'white' }}>{current.ipe.price}</span>
+                  <span className="amount" style={{ color: 'white' }}>150</span>
                   <span className="per" style={{ color: 'rgba(255,255,255,0.5)' }}>/hora</span>
                 </div>
-                <p className="p-note">R$ {current.ipe.single}/hora para 1h única</p>
+                <p className="p-note">a partir de 2h · R$ 180,00 para 1h única</p>
                 <div className="p-divider" />
                 <ul className="p-features">
-                  <li><Check size={16} className="icon" /> Poltronas</li>
-                  <li><Check size={16} className="icon" /> Balanço</li>
-                  <li><Check size={16} className="icon" /> Cama</li>
-                  <li><Check size={16} className="icon" /> Luz natural</li>
-                  <li><Check size={16} className="icon" /> Barra de Pole Dance</li>
+                  <li><Check size={16} className="icon" /> 02 softbox de luz contínua</li>
+                  <li><Check size={16} className="icon" /> Caixa de som bluetooth</li>
+                  <li><Check size={16} className="icon" /> Móveis e objetos</li>
+                  <li><Check size={16} className="icon" /> Locação mínima de 1h</li>
+                  <li><Check size={16} className="icon" /> Até 6 pessoas incluídas</li>
+                  <li><Check size={16} className="icon" /> Balanço, poltronas e luz natural</li>
                 </ul>
                 <button className="btn-primary" style={{ width: '100%', marginTop: '2rem', background: 'white', color: 'var(--green-dark)' }}
                   onClick={() => window.open('https://wa.me/5511913684056?text=Olá! Quero reservar a Sala Ipê no Jungle Studio.', '_blank')}>
@@ -318,19 +281,20 @@ export default function Home() {
               <div className="p-card">
                 <div className="p-card-accent" />
                 <span className="p-card-tag">Sala PRO</span>
-                <h3>O espaço completo</h3>
+                <h3>Estúdio Equipado</h3>
                 <div className="p-price">
                   <span className="currency">R$</span>
-                  <span className="amount">{current.pro.price}</span>
+                  <span className="amount">160</span>
                   <span className="per">/hora</span>
                 </div>
-                <p className="p-note">R$ {current.pro.single}/hora para 1h única</p>
+                <p className="p-note">a partir de 2h · R$ 180,00 para 1h única</p>
                 <div className="p-divider" />
                 <ul className="p-features">
-                  <li><Check size={16} className="icon" /> Fundo branco</li>
-                  <li><Check size={16} className="icon" /> Tecidos</li>
-                  <li><Check size={16} className="icon" /> 3 tochas de flash</li>
-                  <li><Check size={16} className="icon" /> Mobília versátil</li>
+                  <li><Check size={16} className="icon" /> Caixa de som bluetooth</li>
+                  <li><Check size={16} className="icon" /> Locação mínima de 1h</li>
+                  <li><Check size={16} className="icon" /> Até 4 pessoas incluídas</li>
+                  <li><Check size={16} className="icon" /> Fundo branco e tecidos</li>
+                  <li><Check size={16} className="icon" /> 3 tochas de flash e mobília</li>
                 </ul>
                 <button className="btn-primary" style={{ width: '100%', marginTop: '2rem' }}
                   onClick={() => window.open('https://wa.me/5511913684056?text=Olá! Quero reservar a Sala PRO no Jungle Studio.', '_blank')}>
@@ -345,15 +309,18 @@ export default function Home() {
                 <h3>Experiência Completa</h3>
                 <div className="p-price">
                   <span className="currency">R$</span>
-                  <span className="amount">300</span>
+                  <span className="amount">250</span>
                   <span className="per">/hora</span>
                 </div>
-                <p className="p-note">R$ 350/hora para 1h única (a partir de 2h: R$ 300/h)</p>
+                <p className="p-note">a partir de 2h · R$ 330,00 para 1h única</p>
                 <div className="p-divider" />
                 <ul className="p-features">
                   <li><Check size={16} className="icon" /> Todos os ambientes disponíveis</li>
                   <li><Check size={16} className="icon" /> Suporte durante a produção</li>
-                  <li><Check size={16} className="icon" /> Preços especiais acima de 6 horas</li>
+                  <li><Check size={16} className="icon" /> Equipamentos incluídos</li>
+                  <li><Check size={16} className="icon" /> Até 10 pessoas incluídas</li>
+                  <li><Check size={16} className="icon" /> Meia diária (6h): R$ 1.500</li>
+                  <li><Check size={16} className="icon" /> Diária (8h): R$ 2.200</li>
                 </ul>
                 <button className="btn-outline" style={{ width: '100%', marginTop: '2rem' }}
                   onClick={() => window.open('https://wa.me/5511913684056?text=Olá! Quero reservar o Full Jungle no Jungle Studio.', '_blank')}>
@@ -366,7 +333,7 @@ export default function Home() {
             <div className="full-jungle" style={{ marginTop: '2rem' }}>
               <div>
                 <h3>PRODUÇÕES MAIORES</h3>
-                <p>Acesso a <strong style={{ color: 'white' }}>todos os ambientes</strong> do estúdio. A selva inteira é sua — do jeito que sua produção merece.</p>
+                <p>Acesso a <strong style={{ color: 'white' }}>todos os ambientes</strong> do estúdio. Meia diária (6h): R$ 1.500 | Diária (8h): R$ 2.200.</p>
               </div>
               <div className="full-jungle-price" style={{ justifyContent: 'center' }}>
                 <button className="btn-primary full-jungle-btn"

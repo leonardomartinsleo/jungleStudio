@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer-inner">
           <div className="footer-logo">
-            <img src="/images/page2_img2.png" alt="Jungle Studio" />
+            <img src="/logo/JUNGLE%20BRANCO.svg" alt="Jungle Studio" style={{ height: '60px', width: 'auto', objectFit: 'contain' }} />
             <p className="footer-desc">
               Um oásis de criatividade no coração do centro histórico de São Paulo. Espaço único para ensaios, editoriais e produções audiovisuais.
             </p>
@@ -22,11 +22,13 @@ export default function Footer() {
             <ul>
               <li><a href="#oestudio" onClick={e => { e.preventDefault(); scrollTo('oestudio'); }}>O Estúdio</a></li>
               <li><Link to="/quem-somos">Quem Somos</Link></li>
-              <li><a href="#espaco" onClick={e => { e.preventDefault(); scrollTo('espaco'); }}>Espaço</a></li>
-              <li><a href="#localizacao" onClick={e => { e.preventDefault(); scrollTo('localizacao'); }}>Localização</a></li>
+              <li><a href="#espaco" onClick={e => { e.preventDefault(); scrollTo('espaco'); }}>Espaços</a></li>
+              <li><a href="#localizacao" onClick={e => { e.preventDefault(); scrollTo('localizacao'); }}>Como Chegar</a></li>
               <li><Link to="/sessions">Jungle Sessions</Link></li>
-              <li><Link to="/sonora">Sonora</Link></li>
-              <li><Link to="/loja">Loja</Link></li>
+              <li><Link to="/sonora">Sonora Play</Link></li>
+              <li><Link to="/jungle-live">Jungle Live</Link></li>
+              <li><Link to="/jungle-rec">Jungle Rec</Link></li>
+              <li><Link to="/loja">Lojinha</Link></li>
             </ul>
           </div>
 
